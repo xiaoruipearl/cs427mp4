@@ -1,6 +1,9 @@
 package edu.illinois.cs427.mp4;
 
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * This class contains the information needed to represent a book.
@@ -17,6 +20,8 @@ public final class Book extends Element {
      */
     public Book(String title, String author) {
         // TODO implement this
+        this.title = title;
+        this.author = author;
     }
 
     /**
@@ -37,6 +42,7 @@ public final class Book extends Element {
      */
     public String getStringRepresentation() {
         // TODO implement this
+
         return null;
     }
 
@@ -64,7 +70,7 @@ public final class Book extends Element {
      */
     public String getTitle() {
         // TODO implement this
-        return null;
+        return title;
     }
 
     /**
@@ -74,6 +80,6 @@ public final class Book extends Element {
      */
     public String getAuthor() {
         // TODO implement this
-        return null;
+        return author;
     }
 }

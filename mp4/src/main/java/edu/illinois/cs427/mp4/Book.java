@@ -32,6 +32,9 @@ public final class Book extends Element {
      */
     public Book(String stringRepresentation) {
         // TODO implement this
+        JSONObject book = new JSONObject(stringRepresentation);
+        title = book.getString("title");
+        author = book.getString("author(s)");
     }
 
     /**
@@ -42,8 +45,8 @@ public final class Book extends Element {
      */
     public String getStringRepresentation() {
         // TODO implement this
-
-        return null;
+        String stringRep = "{\"title\":\"" + title + "\",\"author(s)\":\"" + author + "\"}";
+        return stringRep;
     }
 
     /**

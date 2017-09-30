@@ -1,6 +1,8 @@
 package edu.illinois.cs427.mp4;
 
 import java.util.List;
+
+import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,8 +44,8 @@ public final class Book extends Element {
      * @return the string representation
      */
     public String getStringRepresentation() {
-        String stringRep = "{\"title\":\"" + title + "\",\"author(s)\":\"" + author + "\"}";
-        return stringRep;
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
     /**

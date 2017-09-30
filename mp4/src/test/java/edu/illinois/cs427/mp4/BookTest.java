@@ -1,5 +1,4 @@
 package edu.illinois.cs427.mp4;
-import junit.framework.TestCase;
 
 import junit.framework.TestCase;
 import static junit.framework.Assert.assertEquals;
@@ -12,9 +11,10 @@ public class BookTest extends TestCase{
     }
 
     public void testBookConstructor2() {
-      Book book2 = new Book("{\"title\":\"bo, ok2\",\"author(s)\":\"pe, arl\"}");
-      assertEquals("bo, ok2", book2.getTitle());
-      assertEquals("pe, arl", book2.getAuthor());
+      Book book2 = new Book("helloworld", "pearl");
+      Book book3 = new Book(book2.getStringRepresentation());
+        assertEquals("helloworld", book3.getTitle());
+        assertEquals("pearl", book3.getAuthor());
     }
     public void testGetStringRepresentation1() {
         Book book1 = new Book("hello", "world");

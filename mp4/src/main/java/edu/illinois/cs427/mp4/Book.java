@@ -13,7 +13,6 @@ import org.json.JSONObject;
 public final class Book extends Element {
     private String title;
     private String author;
-
     /**
      * Builds a book with the given title and author.
      *
@@ -34,7 +33,7 @@ public final class Book extends Element {
     public Book(String stringRepresentation) {
         JSONObject book = new JSONObject(stringRepresentation);
         title = book.getString("title");
-        author = book.getString("author(s)");
+        author = book.getString("author");
     }
 
     /**

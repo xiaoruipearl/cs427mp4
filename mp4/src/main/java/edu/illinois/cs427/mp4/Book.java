@@ -19,7 +19,6 @@ public final class Book extends Element {
      * @param author the author of the book
      */
     public Book(String title, String author) {
-        // TODO implement this
         this.title = title;
         this.author = author;
     }
@@ -31,7 +30,6 @@ public final class Book extends Element {
      * @param stringRepresentation the string representation
      */
     public Book(String stringRepresentation) {
-        // TODO implement this
         JSONObject book = new JSONObject(stringRepresentation);
         title = book.getString("title");
         author = book.getString("author(s)");
@@ -44,7 +42,6 @@ public final class Book extends Element {
      * @return the string representation
      */
     public String getStringRepresentation() {
-        // TODO implement this
         String stringRep = "{\"title\":\"" + title + "\",\"author(s)\":\"" + author + "\"}";
         return stringRep;
     }
@@ -72,7 +69,6 @@ public final class Book extends Element {
      * @return the title
      */
     public String getTitle() {
-        // TODO implement this
         return title;
     }
 
@@ -82,7 +78,6 @@ public final class Book extends Element {
      * @return the author
      */
     public String getAuthor() {
-        // TODO implement this
         return author;
     }
 }

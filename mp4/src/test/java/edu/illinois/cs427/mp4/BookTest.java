@@ -1,8 +1,13 @@
 package edu.illinois.cs427.mp4;
 
-public class BookTest {
+import junit.framework.TestCase;
+import static junit.framework.Assert.assertEquals;
+
+public class BookTest extends TestCase{
     public void testBookConstructor1() {
-        //TODO implement this
+        Book book1 = new Book("hello", "world");
+        assertEquals("hello", book1.getTitle());
+        assertEquals("world", book1.getAuthor());
     }
 
     public void testGetStringRepresentation1() {

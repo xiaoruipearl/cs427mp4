@@ -1,6 +1,8 @@
 package edu.illinois.cs427.mp4;
 
 import java.util.List;
+import java.util.ArrayList;
+
 
 import com.google.gson.Gson;
 import org.json.JSONArray;
@@ -25,8 +27,8 @@ public final class Book extends Element {
     }
 
     /**
-     * Builds a book from the string representation, 
-     * which contains the title and author of the book. 
+     * Builds a book from the string representation,
+     * which contains the title and author of the book.
      *
      * @param stringRepresentation the string representation
      */
@@ -49,19 +51,28 @@ public final class Book extends Element {
 
     /**
      * Returns all the collections that this book belongs to directly and indirectly.
-     * Consider the following. 
-     * (1) Computer Science is a collection. 
-     * (2) Operating Systems is a collection under Computer Science. 
-     * (3) The Linux Kernel is a book under Operating System collection. 
-     * Then, getContainingCollections method for The Linux Kernel should return a list 
-     * of these two collections (Operating Systems, Computer Science), starting from 
+     * Consider the following.
+     * (1) Computer Science is a collection.
+     * (2) Operating Systems is a collection under Computer Science.
+     * (3) The Linux Kernel is a book under Operating System collection.
+     * Then, getContainingCollections method for The Linux Kernel should return a list
+     * of these two collections (Operating Systems, Computer Science), starting from
      * the direct collection to more indirect collections.
      *
      * @return the list of collections
      */
     public List<Collection> getContainingCollections() {
-        // TODO implement this
-        return null;
+      List<Collection> coll = new ArrayList<Collection>();
+      Element curr = this;
+      while (true) {
+        Collection parent = curr.getParentCollection();
+        if (parent == null) {
+          break;
+        }
+        coll.add(parent);
+        curr = parent;
+      }
+        return coll;
     }
 
     /**

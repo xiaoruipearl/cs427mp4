@@ -28,9 +28,10 @@ public final class Collection extends Element {
      * @param stringRepresentation the string representation
      */
     public static Collection restoreCollection(String stringRepresentation) {
-        Gson gson = new Gson();
-        Collection coll = gson.fromJson(stringRepresentation, Collection.class);
-        return coll;
+        return null;
+        // Gson gson = new Gson();
+        // Collection coll = gson.fromJson(stringRepresentation, Collection.class);
+        // return coll;
     }
 
     /**
@@ -41,18 +42,8 @@ public final class Collection extends Element {
      * @return string representation of this collection
      */
     public String getStringRepresentation() {
-        //Gson gson = new Gson();
-        String stringRep = "";
-        for (int i = 0; i < elements.size(); i++){
-            Element elem = elements.get(i);
-            if(elem instanceof Book){
-                stringRep += ((Book) elem).getStringRepresentation();
-                System.out.println(stringRep);
-            }
-            else
-                stringRep += ((Collection) elem).getStringRepresentation();
-        }
-        return stringRep;
+      Gson gson = new Gson();
+      return gson.toJson(this);
     }
 
     /**

@@ -1,5 +1,6 @@
 package edu.illinois.cs427.mp4;
 
+import java.util.List;
 import junit.framework.TestCase;
 import static junit.framework.Assert.assertEquals;
 
@@ -23,6 +24,13 @@ public class BookTest extends TestCase{
     }
 
     public void testGetContainingCollections1() {
-        //TODO implement this
+      Book book1 = new Book("hello", "world");
+      Collection coll = new Collection("coll");
+      coll.addElement(book1);
+      Collection collP = new Collection("collP");
+      collP.addElement(coll);
+      List<Collection> parents = book1.getContainingCollections();
+      assertEquals(coll, parents.get(0));
+      assertEquals(collP, parents.get(1));
     }
 }

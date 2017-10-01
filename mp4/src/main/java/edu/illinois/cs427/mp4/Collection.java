@@ -1,9 +1,12 @@
 package edu.illinois.cs427.mp4;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import com.google.gson.Gson;
-
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Represents a collection of books or (sub)collections.
@@ -28,10 +31,20 @@ public final class Collection extends Element {
      * @param stringRepresentation the string representation
      */
     public static Collection restoreCollection(String stringRepresentation) {
-        return null;
-        // Gson gson = new Gson();
-        // Collection coll = gson.fromJson(stringRepresentation, Collection.class);
-        // return coll;
+        Gson gson = new Gson();
+        JSONObject collection = new JSONObject(stringRepresentation);
+        Collection restore = new Collection(collection.getString("name"));
+        JSONArray elems = collection.getJSONArray("elements");
+        for(int i = 0; i < elems.length(); i++){
+            JSONObject elem = elems.getJSONObject(i);
+            if(elem.has("title"))
+                restore.addElement(new Book(elem.getString("title"), elem.getString("author")));
+            else{
+                Collection temp = restoreCollection(elem.toString());
+                restore.addElement(temp);
+            }
+        }
+        return restore;
     }
 
     /**
@@ -42,8 +55,8 @@ public final class Collection extends Element {
      * @return string representation of this collection
      */
     public String getStringRepresentation() {
-      Gson gson = new Gson();
-      return gson.toJson(this);
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
     /**

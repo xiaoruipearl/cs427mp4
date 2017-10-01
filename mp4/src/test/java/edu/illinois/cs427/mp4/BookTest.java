@@ -2,18 +2,17 @@ package edu.illinois.cs427.mp4;
 
 import java.util.List;
 import junit.framework.TestCase;
-import static junit.framework.Assert.assertEquals;
 
 public class BookTest extends TestCase{
     public void testBookConstructor1() {
-      Book book1 = new Book("hello", "world");
-      assertEquals("hello", book1.getTitle());
-      assertEquals("world", book1.getAuthor());
+        Book book1 = new Book("hello", "world");
+        assertEquals("hello", book1.getTitle());
+        assertEquals("world", book1.getAuthor());
     }
 
     public void testBookConstructor2() {
-      Book book2 = new Book("helloworld", "pearl");
-      Book book3 = new Book(book2.getStringRepresentation());
+        Book book2 = new Book("helloworld", "pearl");
+        Book book3 = new Book(book2.getStringRepresentation());
         assertEquals("helloworld", book3.getTitle());
         assertEquals("pearl", book3.getAuthor());
     }
@@ -24,13 +23,13 @@ public class BookTest extends TestCase{
     }
 
     public void testGetContainingCollections1() {
-      Book book1 = new Book("hello", "world");
-      Collection coll = new Collection("coll");
-      coll.addElement(book1);
-      Collection collP = new Collection("collP");
-      collP.addElement(coll);
-      List<Collection> parents = book1.getContainingCollections();
-      assertEquals(coll, parents.get(0));
-      assertEquals(collP, parents.get(1));
+        Book book1 = new Book("hello", "world");
+        Collection coll = new Collection("coll");
+        coll.addElement(book1);
+        Collection collP = new Collection("collP");
+        collP.addElement(coll);
+        List<Collection> parents = book1.getContainingCollections();
+        assertEquals(coll, parents.get(0));
+        assertEquals(collP, parents.get(1));
     }
 }

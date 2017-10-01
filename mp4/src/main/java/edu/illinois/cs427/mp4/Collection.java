@@ -18,8 +18,8 @@ public final class Collection extends Element {
      * @param name the name of the collection
      */
     public Collection(String name) {
-      this.name = name;
-      this.elements = new ArrayList<Element>();
+        this.name = name;
+        this.elements = new ArrayList<Element>();
     }
 
     /**
@@ -41,8 +41,18 @@ public final class Collection extends Element {
      * @return string representation of this collection
      */
     public String getStringRepresentation() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        //Gson gson = new Gson();
+        String stringRep = "";
+        for (int i = 0; i < elements.size(); i++){
+            Element elem = elements.get(i);
+            if(elem instanceof Book){
+                stringRep += ((Book) elem).getStringRepresentation();
+                System.out.println(stringRep);
+            }
+            else
+                stringRep += ((Collection) elem).getStringRepresentation();
+        }
+        return stringRep;
     }
 
     /**
@@ -66,13 +76,12 @@ public final class Collection extends Element {
      * @return true on success, false on fail
      */
     public boolean addElement(Element element) {
-        if (element.getParentCollection() == null){
-          return false;
+        if (element.getParentCollection() != null){
+            return false;
         }
-        else {
-          elements.add(element);
-          return true;
-        }
+        elements.add(element);
+        element.setParentCollection(this);
+        return true;
     }
 
     /**
@@ -87,13 +96,11 @@ public final class Collection extends Element {
      */
     public boolean deleteElement(Element element) {
         if (!elements.contains(element)){
-          return false;
+            return false;
         }
-        else {
-          element.setParentCollection(null);
-          elements.remove(element);
-          return true;
-        }
+        element.setParentCollection(null);
+        elements.remove(element);
+        return true;
     }
 
     /**

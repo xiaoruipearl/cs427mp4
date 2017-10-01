@@ -26,7 +26,7 @@ public class BookTest{
         Book book1 = new Book("hello", "world");
         assertEquals("{\"title\":\"hello\",\"author\":\"world\"}",book1.getStringRepresentation());
     }
-    
+
     @Test
     public void testGetContainingCollections1() {
         Book book1 = new Book("hello", "world");
@@ -37,5 +37,12 @@ public class BookTest{
         List<Collection> parents = book1.getContainingCollections();
         assertEquals(coll, parents.get(0));
         assertEquals(collP, parents.get(1));
+    }
+
+    @Test
+    public void testGetContainingCollections2() {
+        Book book1 = new Book("hello", "world");
+        List<Collection> parents = book1.getContainingCollections();
+        assertEquals(0, parents.size());
     }
 }

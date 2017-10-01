@@ -60,16 +60,16 @@ public final class Book extends Element {
      * @return the list of collections
      */
     public List<Collection> getContainingCollections() {
-      List<Collection> coll = new ArrayList<Collection>();
-      Element curr = this;
-      while (true) {
-        Collection parent = curr.getParentCollection();
-        if (parent == null) {
-          break;
+        List<Collection> coll = new ArrayList<Collection>();
+        Element curr = this;
+        while (true) {
+            Collection parent = curr.getParentCollection();
+            if (parent == null) {
+                break;
+            }
+            coll.add(parent);
+            curr = parent;
         }
-        coll.add(parent);
-        curr = parent;
-      }
         return coll;
     }
 

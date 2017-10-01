@@ -1,10 +1,8 @@
 package edu.illinois.cs427.mp4;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import com.google.gson.*;
-//import com.google.gson.reflect.TypeToken;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -80,9 +78,8 @@ public final class Collection extends Element {
      * @return true on success, false on fail
      */
     public boolean addElement(Element element) {
-        if (element.getParentCollection() != null){
+        if (element.getParentCollection() != null)
             return false;
-        }
         elements.add(element);
         element.setParentCollection(this);
         return true;
@@ -99,9 +96,8 @@ public final class Collection extends Element {
      * @return true on success, false on fail
      */
     public boolean deleteElement(Element element) {
-        if (!elements.contains(element)){
+        if (!elements.contains(element))
             return false;
-        }
         element.setParentCollection(null);
         elements.remove(element);
         return true;

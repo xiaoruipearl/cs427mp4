@@ -5,6 +5,7 @@ import org.junit.*;
 import static junit.framework.Assert.*;
 
 public class BookTest{
+
     @Test
     public void testBookConstructor1() {
         Book book1 = new Book("hello", "world");

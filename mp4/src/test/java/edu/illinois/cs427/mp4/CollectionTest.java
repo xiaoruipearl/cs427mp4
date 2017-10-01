@@ -20,20 +20,18 @@ public class CollectionTest{
     }
 
     private void collectionComp(Collection coll, Collection restored) {
-      assertEquals(coll.getName(), restored.getName());
-      List<Element> collElems = coll.getElements();
-      List<Element> restoredElems = restored.getElements();
-      assertEquals(collElems.size(), restoredElems.size());
-      for (int i = 0; i < collElems.size(); i++){
-          if(collElems.get(i) instanceof Book) {
-              assertEquals(((Book) collElems.get(i)).getTitle(), ((Book) restoredElems.get(i)).getTitle());
-              assertEquals(((Book) collElems.get(i)).getAuthor(), ((Book) restoredElems.get(i)).getAuthor());
+        assertEquals(coll.getName(), restored.getName());
+        List<Element> collElems = coll.getElements();
+        List<Element> restoredElems = restored.getElements();
+        assertEquals(collElems.size(), restoredElems.size());
+        for (int i = 0; i < collElems.size(); i++){
+            if(collElems.get(i) instanceof Book) {
+                assertEquals(((Book) collElems.get(i)).getTitle(), ((Book) restoredElems.get(i)).getTitle());
+                assertEquals(((Book) collElems.get(i)).getAuthor(), ((Book) restoredElems.get(i)).getAuthor());
             }
-          else {
-              assertEquals(((Collection) collElems.get(i)).getName(), ((Collection) restoredElems.get(i)).getName());
-              collectionComp((Collection) collElems.get(i), (Collection)restoredElems.get(i));
-            }
-      }
+            else
+                collectionComp((Collection) collElems.get(i), (Collection) restoredElems.get(i));
+        }
     }
 
     @Test
@@ -49,26 +47,26 @@ public class CollectionTest{
 
     @Test
     public void testAddElement1() {
-      Collection coll1 = new Collection("wiki");
-      Book book = new Book("hi~!","you<>-");
-      Collection subCol = new Collection("sub;");
-      assertTrue(coll1.addElement(book));
-      assertTrue(coll1.addElement(subCol));
+        Collection coll1 = new Collection("wiki");
+        Book book = new Book("hi~!","you<>-");
+        Collection subCol = new Collection("sub;");
+        assertTrue(coll1.addElement(book));
+        assertTrue(coll1.addElement(subCol));
 
-      Collection coll2 = new Collection("pedia");
-      assertTrue(!coll2.addElement(book));
-      assertTrue(!coll2.addElement(subCol));
+        Collection coll2 = new Collection("pedia");
+        assertTrue(!coll2.addElement(book));
+        assertTrue(!coll2.addElement(subCol));
     }
     @Test
     public void testDeleteElement1() {
-      Collection coll = new Collection("wiki");
-      Book book1 = new Book("hi","you");
-      Collection subCol = new Collection("sub");
-      coll.addElement(book1);
-      coll.addElement(subCol);
-      assertTrue(coll.deleteElement(book1));
-      assertTrue(!coll.deleteElement(book1));
-      assertTrue(coll.deleteElement(subCol));
-      assertTrue(!coll.deleteElement(subCol));
+        Collection coll = new Collection("wiki");
+        Book book1 = new Book("hi","you");
+        Collection subCol = new Collection("sub");
+        coll.addElement(book1);
+        coll.addElement(subCol);
+        assertTrue(coll.deleteElement(book1));
+        assertTrue(!coll.deleteElement(book1));
+        assertTrue(coll.deleteElement(subCol));
+        assertTrue(!coll.deleteElement(subCol));
     }
 }

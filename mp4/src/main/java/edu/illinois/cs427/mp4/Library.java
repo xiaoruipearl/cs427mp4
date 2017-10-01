@@ -36,20 +36,18 @@ public final class Library {
         String stringRep = "";
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         while (true) {
-          String currentLine = reader.readLine();
-          if (currentLine == null) {
-            break;
-          }
-          else {
-            stringRep += currentLine;
-          }
+            String currentLine = reader.readLine();
+            if (currentLine == null)
+                break;
+            else
+                stringRep += currentLine;
         }
 
         JSONObject lib = new JSONObject(stringRep);
         JSONArray collections = lib.getJSONArray("collections");
         for (int i = 0; i < collections.length(); i++) {
-          Collection coll = Collection.restoreCollection(collections.getJSONObject(i).toString());
-          this.collections.add(coll);
+            Collection coll = Collection.restoreCollection(collections.getJSONObject(i).toString());
+            this.collections.add(coll);
         }
     }
 
@@ -59,11 +57,11 @@ public final class Library {
      * @param fileName the file where to save the library
      */
     public void saveLibraryToFile(String fileName) throws IOException{
-      Gson gson = new Gson();
-      String stringRep = gson.toJson(this);
-      BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-      writer.write(stringRep);
-      writer.close();
+        Gson gson = new Gson();
+        String stringRep = gson.toJson(this);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        writer.write(stringRep);
+        writer.close();
     }
 
     /**
@@ -72,7 +70,6 @@ public final class Library {
      * @return library contained elements
      */
     public List<Collection> getCollections() {
-        // TODO implement this
         return collections;
     }
 }

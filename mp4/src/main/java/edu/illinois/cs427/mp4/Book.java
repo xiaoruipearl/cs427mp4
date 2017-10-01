@@ -2,8 +2,6 @@ package edu.illinois.cs427.mp4;
 
 import java.util.List;
 import java.util.ArrayList;
-
-
 import com.google.gson.Gson;
 import org.json.JSONObject;
 
@@ -64,9 +62,8 @@ public final class Book extends Element {
         Element curr = this;
         while (true) {
             Collection parent = curr.getParentCollection();
-            if (parent == null) {
+            if (parent == null)
                 break;
-            }
             coll.add(parent);
             curr = parent;
         }

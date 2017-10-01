@@ -6,7 +6,11 @@ import com.google.gson.*;
 
 import java.io.IOException;
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.FileWriter;
+import java.io.FileReader;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Container class for all the collections (that eventually contain books).
@@ -28,7 +32,30 @@ public final class Library {
      * @param fileName the file from where to restore the library.
      */
     public Library(String fileName) {
-        // TODO implement this
+        this();
+        String stringRep = "";
+        try{
+          BufferedReader reader = new BufferedReader(new FileReader(fileName));
+          while (true) {
+            String currentLine = reader.readLine();
+            if (currentLine == null) {
+              break;
+            }
+            else {
+              stringRep += currentLine;
+            }
+          }
+        }
+        catch (IOException e){
+          System.out.println("IO Exception: "+e.getMessage());
+        }
+
+        JSONObject lib = new JSONObject(stringRep);
+        JSONArray collections = lib.getJSONArray("collections");
+        for (int i = 0; i < collections.length(); i++) {
+          Collection coll = Collection.restoreCollection(collections.getJSONObject(i).toString());
+          this.collections.add(coll);
+        }
     }
 
     /**

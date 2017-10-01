@@ -1,15 +1,18 @@
 package edu.illinois.cs427.mp4;
 
 import java.util.List;
-import junit.framework.TestCase;
+import org.junit.*;
+import static junit.framework.Assert.*;
 
-public class BookTest extends TestCase{
+public class BookTest{
+    @Test
     public void testBookConstructor1() {
         Book book1 = new Book("hello", "world");
         assertEquals("hello", book1.getTitle());
         assertEquals("world", book1.getAuthor());
     }
 
+    @Test
     public void testBookConstructor2() {
         Book book2 = new Book("helloworld", "pearl");
         Book book3 = new Book(book2.getStringRepresentation());
@@ -17,11 +20,13 @@ public class BookTest extends TestCase{
         assertEquals("pearl", book3.getAuthor());
     }
 
+    @Test
     public void testGetStringRepresentation1() {
         Book book1 = new Book("hello", "world");
         assertEquals("{\"title\":\"hello\",\"author\":\"world\"}",book1.getStringRepresentation());
     }
-
+    
+    @Test
     public void testGetContainingCollections1() {
         Book book1 = new Book("hello", "world");
         Collection coll = new Collection("coll");

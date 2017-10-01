@@ -1,6 +1,12 @@
 package edu.illinois.cs427.mp4;
 
 import java.util.List;
+import java.util.ArrayList;
+import com.google.gson.*;
+
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 /**
  * Container class for all the collections (that eventually contain books).
@@ -13,7 +19,7 @@ public final class Library {
      * Builds a new, empty library.
      */
     public Library() {
-        // TODO implement this
+        collections = new ArrayList<Collection>();
     }
 
     /**
@@ -30,8 +36,12 @@ public final class Library {
          *
      * @param fileName the file where to save the library
      */
-    public void saveLibraryToFile(String fileName) {
-        // TODO implement this
+    public void saveLibraryToFile(String fileName) throws IOException{
+      Gson gson = new Gson();
+      String stringRep = gson.toJson(this);
+      BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+      writer.write(stringRep);
+      writer.close();
     }
 
     /**
@@ -41,6 +51,6 @@ public final class Library {
      */
     public List<Collection> getCollections() {
         // TODO implement this
-        return null;
+        return collections;
     }
 }

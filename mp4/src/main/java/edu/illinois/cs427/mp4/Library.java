@@ -31,23 +31,18 @@ public final class Library {
      *
      * @param fileName the file from where to restore the library.
      */
-    public Library(String fileName) {
+    public Library(String fileName) throws IOException{
         this();
         String stringRep = "";
-        try{
-          BufferedReader reader = new BufferedReader(new FileReader(fileName));
-          while (true) {
-            String currentLine = reader.readLine();
-            if (currentLine == null) {
-              break;
-            }
-            else {
-              stringRep += currentLine;
-            }
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        while (true) {
+          String currentLine = reader.readLine();
+          if (currentLine == null) {
+            break;
           }
-        }
-        catch (IOException e){
-          System.out.println("IO Exception: "+e.getMessage());
+          else {
+            stringRep += currentLine;
+          }
         }
 
         JSONObject lib = new JSONObject(stringRep);

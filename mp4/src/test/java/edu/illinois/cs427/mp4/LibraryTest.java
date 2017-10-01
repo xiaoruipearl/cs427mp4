@@ -46,7 +46,8 @@ public class LibraryTest {
 
     @Test
     public void testLibraryConstructorFromFile1() throws IOException{
-        Library restoredLib = new Library("testSaveLibraryToFile1.txt");
+        lib.saveLibraryToFile("src/test/resources/testLibraryConstructorFromFile1.txt");
+        Library restoredLib = new Library("src/test/resources/testLibraryConstructorFromFile1.txt");
         List<Collection> restoredColls = restoredLib.getCollections();
         List<Collection> colls = lib.getCollections();
         assertEquals(colls.size(), restoredColls.size());

@@ -16,9 +16,10 @@ public class BookTest extends TestCase{
         assertEquals("helloworld", book3.getTitle());
         assertEquals("pearl", book3.getAuthor());
     }
+
     public void testGetStringRepresentation1() {
         Book book1 = new Book("hello", "world");
-        assertEquals("{\"title\":\"hello\",\"author(s)\":\"world\"}",book1.getStringRepresentation());
+        assertEquals("{\"title\":\"hello\",\"author\":\"world\"}",book1.getStringRepresentation());
     }
 
     public void testGetContainingCollections1() {

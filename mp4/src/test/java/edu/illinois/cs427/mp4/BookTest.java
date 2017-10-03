@@ -15,10 +15,18 @@ public class BookTest{
 
     @Test
     public void testBookConstructor2() {
-        Book book2 = new Book("helloworld", "pearl");
-        Book book3 = new Book(book2.getStringRepresentation());
-        assertEquals("helloworld", book3.getTitle());
-        assertEquals("pearl", book3.getAuthor());
+        Book book1 = new Book("helloworld", "pearl");
+        Book book2 = new Book(book1.getStringRepresentation());
+        assertEquals("helloworld", book2.getTitle());
+        assertEquals("pearl", book2.getAuthor());
+    }
+
+    @Test
+    public void testBookConstructor3() {
+        Book book1 = new Book("!@#/'-=$.,%^'&'*('", "pearl");
+        Book book2 = new Book(book1.getStringRepresentation());
+        assertEquals("!@#/'-=$.,%^'&'*('", book2.getTitle());
+        assertEquals("pearl", book2.getAuthor());
     }
 
     @Test

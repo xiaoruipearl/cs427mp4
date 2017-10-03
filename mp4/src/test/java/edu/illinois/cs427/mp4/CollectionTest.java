@@ -57,6 +57,12 @@ public class CollectionTest{
         assertTrue(!coll2.addElement(book));
         assertTrue(!coll2.addElement(subCol));
     }
+
+    @Test
+    public void testAddElement2() {
+      Collection coll = new Collection("coll");
+      assertTrue(!coll.addElement(null));
+    }
     @Test
     public void testDeleteElement1() {
         Collection coll = new Collection("wiki");

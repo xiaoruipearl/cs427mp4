@@ -78,7 +78,10 @@ public final class Collection extends Element {
      * @return true on success, false on fail
      */
     public boolean addElement(Element element) {
-        if (element.getParentCollection() != null)
+        if (element == null) {
+          return false;
+        }
+        else if (element.getParentCollection() != null)
             return false;
         elements.add(element);
         element.setParentCollection(this);
